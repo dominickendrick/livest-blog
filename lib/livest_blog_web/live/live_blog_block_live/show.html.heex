@@ -1,0 +1,51 @@
+<h1>Show Live blog block</h1>
+
+<%= if @live_action in [:edit] do %>
+  <.modal return_to={Routes.live_blog_block_show_path(@socket, :show, @live_blog_block)}>
+    <.live_component
+      module={LivestBlogWeb.LiveBlogBlockLive.FormComponent}
+      id={@live_blog_block.id}
+      title={@page_title}
+      action={@live_action}
+      live_blog_block={@live_blog_block}
+      return_to={Routes.live_blog_block_show_path(@socket, :show, @live_blog_block)}
+    />
+  </.modal>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Date:</strong>
+    <%= @live_blog_block.date %>
+  </li>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @live_blog_block.title %>
+  </li>
+
+  <li>
+    <strong>Content:</strong>
+    <%= @live_blog_block.content %>
+  </li>
+
+  <li>
+    <strong>Pinned:</strong>
+    <%= @live_blog_block.pinned %>
+  </li>
+
+  <li>
+    <strong>Key event:</strong>
+    <%= @live_blog_block.key_event %>
+  </li>
+
+  <li>
+    <strong>Updated time:</strong>
+    <%= @live_blog_block.updated_time %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.live_blog_block_show_path(@socket, :edit, @live_blog_block), class: "button" %></span> |
+<span><%= live_redirect "Back", to: Routes.live_blog_block_index_path(@socket, :index) %></span>

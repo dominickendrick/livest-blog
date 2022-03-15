@@ -1,0 +1,49 @@
+<h1>Listing Liveblogblocks</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <.modal return_to={Routes.live_blog_block_index_path(@socket, :index)}>
+    <.live_component
+      module={LivestBlogWeb.LiveBlogBlockLive.FormComponent}
+      id={@live_blog_block.id || :new}
+      title={@page_title}
+      action={@live_action}
+      live_blog_block={@live_blog_block}
+      return_to={Routes.live_blog_block_index_path(@socket, :index)}
+    />
+  </.modal>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Pinned</th>
+      <th>Key event</th>
+      <th>Updated time</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="liveblogblocks">
+    <%= for live_blog_block <- @liveblogblocks do %>
+      <tr id={"live_blog_block-#{live_blog_block.id}"}>
+        <td><%= live_blog_block.date %></td>
+        <td><%= live_blog_block.title %></td>
+        <td><%= live_blog_block.content %></td>
+        <td><%= live_blog_block.pinned %></td>
+        <td><%= live_blog_block.key_event %></td>
+        <td><%= live_blog_block.updated_time %></td>
+
+        <td>
+          <span><%= live_redirect "Show", to: Routes.live_blog_block_show_path(@socket, :show, live_blog_block) %></span>
+          <span><%= live_patch "Edit", to: Routes.live_blog_block_index_path(@socket, :edit, live_blog_block) %></span>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: live_blog_block.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= live_patch "New Live blog block", to: Routes.live_blog_block_index_path(@socket, :new) %></span>

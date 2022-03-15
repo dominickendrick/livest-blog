@@ -49,4 +49,23 @@ defmodule LivestBlog.BlogFixtures do
 
     blog_page
   end
+
+  @doc """
+  Generate a live_blog_block.
+  """
+  def live_blog_block_fixture(attrs \\ %{}) do
+    {:ok, live_blog_block} =
+      attrs
+      |> Enum.into(%{
+        content: "some content",
+        date: ~N[2022-03-14 11:02:00],
+        key_event: true,
+        pinned: true,
+        title: "some title",
+        updated_time: ~N[2022-03-14 11:02:00]
+      })
+      |> LivestBlog.Blog.create_live_blog_block()
+
+    live_blog_block
+  end
 end

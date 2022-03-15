@@ -1,0 +1,44 @@
+<div>
+  <h2><%= @title %></h2>
+
+  <.form
+    let={f}
+    for={@changeset}
+    id="live_blog_block-form"
+    phx-target={@myself}
+    phx-change="validate"
+    phx-submit="save">
+  
+    <%= label f, :date %>
+    <%= datetime_select f, :date %>
+    <%= error_tag f, :date %>
+  
+    <%= label f, :title %>
+    <%= text_input f, :title %>
+    <%= error_tag f, :title %>
+  
+    <%= label f, :content %>
+    <%= text_input f, :content %>
+    <%= error_tag f, :content %>
+  
+    <%= label f, :pinned %>
+    <%= checkbox f, :pinned %>
+    <%= error_tag f, :pinned %>
+  
+    <%= label f, :key_event %>
+    <%= checkbox f, :key_event %>
+    <%= error_tag f, :key_event %>
+  
+    <%= label f, :updated_time %>
+    <%= datetime_select f, :updated_time %>
+    <%= error_tag f, :updated_time %>
+
+    <%= label f, :blogpage_id, "Blogpost Id" %>
+    <%= select f, :blogpage_id, ["USD": "1", "EUR": "1"] %>
+    <%= error_tag f, :blogpage_id %>
+  
+    <div>
+      <%= submit "Save", phx_disable_with: "Saving..." %>
+    </div>
+  </.form>
+</div>

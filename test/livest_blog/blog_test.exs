@@ -146,4 +146,68 @@ defmodule LivestBlog.BlogTest do
       assert %Ecto.Changeset{} = Blog.change_blog_page(blog_page)
     end
   end
+
+  describe "liveblogblocks" do
+    alias LivestBlog.Blog.LiveBlogBlock
+
+    import LivestBlog.BlogFixtures
+
+    @invalid_attrs %{content: nil, date: nil, key_event: nil, pinned: nil, title: nil, updated_time: nil}
+
+    test "list_liveblogblocks/0 returns all liveblogblocks" do
+      live_blog_block = live_blog_block_fixture()
+      assert Blog.list_liveblogblocks() == [live_blog_block]
+    end
+
+    test "get_live_blog_block!/1 returns the live_blog_block with given id" do
+      live_blog_block = live_blog_block_fixture()
+      assert Blog.get_live_blog_block!(live_blog_block.id) == live_blog_block
+    end
+
+    test "create_live_blog_block/1 with valid data creates a live_blog_block" do
+      valid_attrs = %{content: "some content", date: ~N[2022-03-14 11:02:00], key_event: true, pinned: true, title: "some title", updated_time: ~N[2022-03-14 11:02:00]}
+
+      assert {:ok, %LiveBlogBlock{} = live_blog_block} = Blog.create_live_blog_block(valid_attrs)
+      assert live_blog_block.content == "some content"
+      assert live_blog_block.date == ~N[2022-03-14 11:02:00]
+      assert live_blog_block.key_event == true
+      assert live_blog_block.pinned == true
+      assert live_blog_block.title == "some title"
+      assert live_blog_block.updated_time == ~N[2022-03-14 11:02:00]
+    end
+
+    test "create_live_blog_block/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Blog.create_live_blog_block(@invalid_attrs)
+    end
+
+    test "update_live_blog_block/2 with valid data updates the live_blog_block" do
+      live_blog_block = live_blog_block_fixture()
+      update_attrs = %{content: "some updated content", date: ~N[2022-03-15 11:02:00], key_event: false, pinned: false, title: "some updated title", updated_time: ~N[2022-03-15 11:02:00]}
+
+      assert {:ok, %LiveBlogBlock{} = live_blog_block} = Blog.update_live_blog_block(live_blog_block, update_attrs)
+      assert live_blog_block.content == "some updated content"
+      assert live_blog_block.date == ~N[2022-03-15 11:02:00]
+      assert live_blog_block.key_event == false
+      assert live_blog_block.pinned == false
+      assert live_blog_block.title == "some updated title"
+      assert live_blog_block.updated_time == ~N[2022-03-15 11:02:00]
+    end
+
+    test "update_live_blog_block/2 with invalid data returns error changeset" do
+      live_blog_block = live_blog_block_fixture()
+      assert {:error, %Ecto.Changeset{}} = Blog.update_live_blog_block(live_blog_block, @invalid_attrs)
+      assert live_blog_block == Blog.get_live_blog_block!(live_blog_block.id)
+    end
+
+    test "delete_live_blog_block/1 deletes the live_blog_block" do
+      live_blog_block = live_blog_block_fixture()
+      assert {:ok, %LiveBlogBlock{}} = Blog.delete_live_blog_block(live_blog_block)
+      assert_raise Ecto.NoResultsError, fn -> Blog.get_live_blog_block!(live_blog_block.id) end
+    end
+
+    test "change_live_blog_block/1 returns a live_blog_block changeset" do
+      live_blog_block = live_blog_block_fixture()
+      assert %Ecto.Changeset{} = Blog.change_live_blog_block(live_blog_block)
+    end
+  end
 end

@@ -101,4 +101,102 @@ defmodule LivestBlog.Blog do
   def change_blog_page(%BlogPage{} = blog_page, attrs \\ %{}) do
     BlogPage.changeset(blog_page, attrs)
   end
+
+  alias LivestBlog.Blog.LiveBlogBlock
+
+  @doc """
+  Returns the list of liveblogblocks.
+
+  ## Examples
+
+      iex> list_liveblogblocks()
+      [%LiveBlogBlock{}, ...]
+
+  """
+  def list_liveblogblocks do
+    Repo.all(LiveBlogBlock)
+  end
+
+  @doc """
+  Gets a single live_blog_block.
+
+  Raises `Ecto.NoResultsError` if the Live blog block does not exist.
+
+  ## Examples
+
+      iex> get_live_blog_block!(123)
+      %LiveBlogBlock{}
+
+      iex> get_live_blog_block!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_live_blog_block!(id), do: Repo.get!(LiveBlogBlock, id)
+
+  @doc """
+  Creates a live_blog_block.
+
+  ## Examples
+
+      iex> create_live_blog_block(%{field: value})
+      {:ok, %LiveBlogBlock{}}
+
+      iex> create_live_blog_block(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_live_blog_block(attrs \\ %{}) do
+    IO.inspect(attrs)
+
+    %LiveBlogBlock{}
+    |> LiveBlogBlock.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a live_blog_block.
+
+  ## Examples
+
+      iex> update_live_blog_block(live_blog_block, %{field: new_value})
+      {:ok, %LiveBlogBlock{}}
+
+      iex> update_live_blog_block(live_blog_block, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_live_blog_block(%LiveBlogBlock{} = live_blog_block, attrs) do
+    live_blog_block
+    |> LiveBlogBlock.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a live_blog_block.
+
+  ## Examples
+
+      iex> delete_live_blog_block(live_blog_block)
+      {:ok, %LiveBlogBlock{}}
+
+      iex> delete_live_blog_block(live_blog_block)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_live_blog_block(%LiveBlogBlock{} = live_blog_block) do
+    Repo.delete(live_blog_block)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking live_blog_block changes.
+
+  ## Examples
+
+      iex> change_live_blog_block(live_blog_block)
+      %Ecto.Changeset{data: %LiveBlogBlock{}}
+
+  """
+  def change_live_blog_block(%LiveBlogBlock{} = live_blog_block, attrs \\ %{}) do
+    LiveBlogBlock.changeset(live_blog_block, attrs)
+  end
 end

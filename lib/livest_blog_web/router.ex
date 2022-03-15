@@ -20,6 +20,13 @@ defmodule LivestBlogWeb.Router do
     get "/", PageController, :index
 
     resources "/blogpages", BlogPageController
+
+    live "/liveblogblocks", LiveBlogBlockLive.Index, :index
+    live "/liveblogblocks/new", LiveBlogBlockLive.Index, :new
+    live "/liveblogblocks/:id/edit", LiveBlogBlockLive.Index, :edit
+
+    live "/liveblogblocks/:id", LiveBlogBlockLive.Show, :show
+    live "/liveblogblocks/:id/show/edit", LiveBlogBlockLive.Show, :edit
   end
 
   # Other scopes may use custom stacks.
