@@ -18,6 +18,8 @@ defmodule LivestBlogWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+
+    resources "/blogpages", BlogPageController
   end
 
   # Other scopes may use custom stacks.

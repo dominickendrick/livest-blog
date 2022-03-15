@@ -1,0 +1,32 @@
+<h1>Live Blogs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Section</th>
+      <th>Web publication date</th>
+      <th>Pillar</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for blog_page <- @blogpages do %>
+    <tr>
+      <td><%= link blog_page.webTitle, to: Routes.blog_page_path(@conn, :show, blog_page) %></td>
+      <td><%= blog_page.sectionName %></td>
+      <td><%= blog_page.webPublicationDate %></td>     
+      <td><%= blog_page.pillarName %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.blog_page_path(@conn, :show, blog_page) %></span>
+        <span><%= link "Edit", to: Routes.blog_page_path(@conn, :edit, blog_page) %></span>
+        <span><%= link "Delete", to: Routes.blog_page_path(@conn, :delete, blog_page), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Blog page", to: Routes.blog_page_path(@conn, :new) %></span>

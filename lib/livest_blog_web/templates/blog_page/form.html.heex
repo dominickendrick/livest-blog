@@ -1,0 +1,51 @@
+<.form let={f} for={@changeset} action={@action}>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <%= label f, :pageId %>
+  <%= text_input f, :pageId %>
+  <%= error_tag f, :pageId %>
+
+  <%= label f, :type %>
+  <%= text_input f, :type %>
+  <%= error_tag f, :type %>
+
+  <%= label f, :sectionId %>
+  <%= text_input f, :sectionId %>
+  <%= error_tag f, :sectionId %>
+
+  <%= label f, :sectionName %>
+  <%= text_input f, :sectionName %>
+  <%= error_tag f, :sectionName %>
+
+  <%= label f, :webPublicationDate %>
+  <%= datetime_select f, :webPublicationDate %>
+  <%= error_tag f, :webPublicationDate %>
+
+  <%= label f, :webTitle %>
+  <%= text_input f, :webTitle %>
+  <%= error_tag f, :webTitle %>
+
+  <%= label f, :webUrl %>
+  <%= text_input f, :webUrl %>
+  <%= error_tag f, :webUrl %>
+
+  <%= label f, :apiUrl %>
+  <%= text_input f, :apiUrl %>
+  <%= error_tag f, :apiUrl %>
+
+  <%= label f, :pillarId %>
+  <%= text_input f, :pillarId %>
+  <%= error_tag f, :pillarId %>
+
+  <%= label f, :pillarName %>
+  <%= text_input f, :pillarName %>
+  <%= error_tag f, :pillarName %>
+
+  <div>
+    <%= submit "Save" %>
+  </div>
+</.form>

@@ -1,0 +1,28 @@
+<h1><%= @blog_page.webTitle %></h1>
+
+<ul>
+  <li>
+    <strong>Sectionname:</strong>
+    <%= @blog_page.sectionName %>
+  </li>
+
+  <li>
+    <strong>Webpublicationdate:</strong>
+    <%= @blog_page.webPublicationDate %>
+  </li>
+
+  <li>
+    <strong>Webtitle:</strong>
+    <%= @blog_page.webTitle %>
+  </li>
+
+
+  <li>
+    <strong>Pillarname:</strong>
+    <%= @blog_page.pillarName %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.blog_page_path(@conn, :edit, @blog_page) %></span> |
+<span><%= link "Back", to: Routes.blog_page_path(@conn, :index) %></span>
