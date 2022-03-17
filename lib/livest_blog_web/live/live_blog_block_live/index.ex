@@ -17,11 +17,13 @@ defmodule LivestBlogWeb.LiveBlogBlockLive.Index do
   defp apply_action(socket, :edit, %{"id" => id}) do
     socket
     |> assign(:page_title, "Edit Live blog block")
+    |> assign(:blog_ids, Blog.list_blogpage_ids())
     |> assign(:live_blog_block, Blog.get_live_blog_block!(id))
   end
 
   defp apply_action(socket, :new, _params) do
     socket
+    |> assign(:blog_ids, Blog.list_blogpage_ids())
     |> assign(:page_title, "New Live blog block")
     |> assign(:live_blog_block, %LiveBlogBlock{})
   end

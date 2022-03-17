@@ -1,6 +1,5 @@
 <div>
   <h2><%= @title %></h2>
-
   <.form
     let={f}
     for={@changeset}
@@ -34,7 +33,7 @@
     <%= error_tag f, :updated_time %>
 
     <%= label f, :blogpage_id, "Blogpost Id" %>
-    <%= select f, :blogpage_id, ["USD": "1", "EUR": "1"] %>
+    <%= select f, :blogpage_id, @blog_ids %>
     <%= error_tag f, :blogpage_id %>
   
     <div>

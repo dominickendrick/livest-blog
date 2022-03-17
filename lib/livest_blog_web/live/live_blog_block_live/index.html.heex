@@ -8,6 +8,7 @@
       title={@page_title}
       action={@live_action}
       live_blog_block={@live_blog_block}
+      blog_ids={@blog_ids}
       return_to={Routes.live_blog_block_index_path(@socket, :index)}
     />
   </.modal>
@@ -34,7 +35,7 @@
         <td><%= live_blog_block.content %></td>
         <td><%= live_blog_block.pinned %></td>
         <td><%= live_blog_block.key_event %></td>
-        <td><%= live_blog_block.updated_time %></td>
+        <td><%= live_blog_block.updated_time %></td>  
 
         <td>
           <span><%= live_redirect "Show", to: Routes.live_blog_block_show_path(@socket, :show, live_blog_block) %></span>
