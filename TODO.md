@@ -13,6 +13,7 @@ http://www.mikeball.us/blog/setting-up-postgres-with-homebrew/
 
 https://elixirschool.com/en/lessons/ecto/associations
 https://hexdocs.pm/ecto/2.2.10/Mix.Tasks.Ecto.Rollback.html
+https://serokell.io/blog/ecto-guide-for-beginners
 
 ## Liveview
 
@@ -20,6 +21,14 @@ https://github.com/phoenixframework/phoenix_live_view
 https://elixir-lang.org/getting-started/typespecs-and-behaviours.html
 https://hexdocs.pm/phoenix_live_view/Phoenix.LiveView.html
 https://hexdocs.pm/phoenix_live_view/form-bindings.html
+https://blog.appsignal.com/2022/01/11/build-interactive-phoenix-liveview-uis-with-components.html
+
+## React Server components
+
+https://blog.bitsrc.io/react-server-components-1ca621ac2519
+https://vercel.com/blog/everything-about-react-server-components
+https://blog.plasmic.app/posts/how-react-server-components-work/
+https://nextjs.org/docs/advanced-features/react-18/server-components
 
 Generated page data using:
 
@@ -45,6 +54,8 @@ Todo:
 - - Style live blog page
 - add live blog blocks (as live content)
 - - Link content id to blog id
+- - - add foreign key constraint ✅
+- - - populate ui list from db - wip
 - - Style live blog content
 - build rendering page for public
 - write/steal css / markup ✅

@@ -22,6 +22,20 @@ defmodule LivestBlog.Blog do
   end
 
   @doc """
+  Returns the list of blogpages ids and titles.
+
+  ## Examples
+
+      iex> list_blogpages()
+      [{id: "1", title: "Title"}, ...]
+
+  """
+  def list_blogpage_ids do
+    Repo.all(BlogPage)
+    |> Enum.map(fn x -> [key: x.webTitle, value: x.id] end)
+  end
+
+  @doc """
   Gets a single blog_page.
 
   Raises `Ecto.NoResultsError` if the Blog page does not exist.
